@@ -77,8 +77,8 @@ module.exports = (grunt) ->
   grunt.registerTask('test', ['karma'])
 
   grunt.registerTask('default', [
-    'umd',
     'coffee',
     'less',
+    'umd',
     'uglify'
   ])
