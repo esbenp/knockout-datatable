@@ -66,7 +66,7 @@ class window.DataTable
     @rows rows
 
     @rowAttributeMap = pureComputed =>
-      rows = @rows()
+      rows = ko.unwrap @rows()
       attrMap = {}
 
       if rows.length > 0
