@@ -53,8 +53,22 @@ module.exports = (grunt) ->
 
         src: 'knockout-datatable.js'
         dest: 'knockout-datatable.min.js'
+
+    umd:
+      datatable:
+        options:
+          src: 'knockout-datatable.js',
+          dest: 'knockout-datatable.amd.js',
+          objectToExport: "this.DataTable",
+          deps: {
+            'default': ['ko'],
+            amd: ['knockout'],
+            cjs: ['knockout'],
+            global: ['ko']
+          }
   }
 
+  grunt.loadNpmTasks 'grunt-umd'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-less'
@@ -65,5 +79,6 @@ module.exports = (grunt) ->
   grunt.registerTask('default', [
     'coffee',
     'less',
+    'umd',
     'uglify'
   ])

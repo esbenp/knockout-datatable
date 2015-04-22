@@ -1,3 +1,19 @@
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module unless amdModuleId is set
+    define(["knockout"], function (a0) {
+      return (root['this.DataTable'] = factory(a0));
+    });
+  } else if (typeof exports === 'object') {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = factory(require("knockout"));
+  } else {
+    root['this.DataTable'] = factory(ko);
+  }
+}(this, function (ko) {
+
 (function() {
   var indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
@@ -557,3 +573,7 @@
   })();
 
 }).call(this);
+
+return this.DataTable;
+
+}));
