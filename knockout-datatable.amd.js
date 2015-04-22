@@ -17,11 +17,7 @@
 (function() {
   var indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-<<<<<<< HEAD
   window.DataTable = (function() {
-=======
-  this.DataTable = (function() {
->>>>>>> umd
     var primitiveCompare, pureComputed;
 
     pureComputed = ko.pureComputed || ko.computed;
@@ -120,11 +116,7 @@
           _this.filtering(true);
           filter = _this.filter();
           rows = _this.rows.slice(0);
-<<<<<<< HEAD
           if ((filter != null) && filter !== '') {
-=======
-          if (filter !== '') {
->>>>>>> umd
             filterFn = _this.filterFn(filter);
             rows = rows.filter(filterFn);
           }
