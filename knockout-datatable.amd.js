@@ -97,7 +97,7 @@
       this.rowAttributeMap = pureComputed((function(_this) {
         return function() {
           var attrMap, key, row;
-          rows = _this.rows();
+          rows = ko.unwrap(_this.rows());
           attrMap = {};
           if (rows.length > 0) {
             row = rows[0];
