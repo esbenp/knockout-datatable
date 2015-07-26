@@ -23,7 +23,7 @@ class window.DataTable
         options = {}
 
     # set some default options if none were passed in
-    @options = ko.utils.extend(Object.create(@DEFAULTS, options))
+    @options = ko.utils.extend(ko.utils.extend({}, DataTable.DEFAULTS), options)
 
     @initObservables()
 

@@ -30,7 +30,7 @@
           options = {};
         }
       }
-      this.options = ko.utils.extend(Object.create(this.DEFAULTS, options));
+      this.options = ko.utils.extend(ko.utils.extend({}, DataTable.DEFAULTS), options);
       this.initObservables();
       if ((serverSideOpts = options.serverSidePagination) && serverSideOpts.enabled) {
         if (!(serverSideOpts.path && serverSideOpts.loader)) {
