@@ -23,16 +23,7 @@ class window.DataTable
         options = {}
 
     # set some default options if none were passed in
-    @options =
-      recordWord:       options.recordWord    or 'record'
-      recordWordPlural: options.recordWordPlural
-      sortDir:          options.sortDir       or 'asc'
-      sortField:        options.sortField     or undefined
-      perPage:          options.perPage       or 15
-      filterFn:         options.filterFn      or undefined
-      unsortedClass:    options.unsortedClass or ''
-      descSortClass:    options.descSortClass or ''
-      ascSortClass:     options.ascSortClass  or ''
+    @options = ko.utils.extend(Object.create(@DEFAULTS, options))
 
     @initObservables()
 
@@ -47,6 +38,17 @@ class window.DataTable
 
     else
       @initWithClientSidePagination(rows)
+
+  @DEFAULTS =
+    recordWord:       'record'
+    recordWordPlural: null
+    sortDir:          'asc'
+    sortField:        undefined
+    perPage:          15
+    filterFn:         undefined
+    unsortedClass:    ''
+    descSortClass:    ''
+    ascSortClass:     ''
 
   initObservables: ->
     @sortDir     = ko.observable @options.sortDir

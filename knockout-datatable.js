@@ -30,17 +30,7 @@
           options = {};
         }
       }
-      this.options = {
-        recordWord: options.recordWord || 'record',
-        recordWordPlural: options.recordWordPlural,
-        sortDir: options.sortDir || 'asc',
-        sortField: options.sortField || void 0,
-        perPage: options.perPage || 15,
-        filterFn: options.filterFn || void 0,
-        unsortedClass: options.unsortedClass || '',
-        descSortClass: options.descSortClass || '',
-        ascSortClass: options.ascSortClass || ''
-      };
+      this.options = ko.utils.extend(Object.create(this.DEFAULTS, options));
       this.initObservables();
       if ((serverSideOpts = options.serverSidePagination) && serverSideOpts.enabled) {
         if (!(serverSideOpts.path && serverSideOpts.loader)) {
@@ -53,6 +43,18 @@
         this.initWithClientSidePagination(rows);
       }
     }
+
+    DataTable.DEFAULTS = {
+      recordWord: 'record',
+      recordWordPlural: null,
+      sortDir: 'asc',
+      sortField: void 0,
+      perPage: 15,
+      filterFn: void 0,
+      unsortedClass: '',
+      descSortClass: '',
+      ascSortClass: ''
+    };
 
     DataTable.prototype.initObservables = function() {
       this.sortDir = ko.observable(this.options.sortDir);
